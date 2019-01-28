@@ -7,6 +7,15 @@
     <string name="add">Add</string>
     <string name="expense">Expense</string>
     <string name="revenue">Revenue</string>
+    <string name="what_kind">What?</string>
+    <string name="zero">0.00</string>
+    <string name="who">Who?</string>
+    <string name="date">Date</string>
+    <string name="type">Type</string>
+    <string name="amount">Amount</string>
+    <string name="item">Item</string>
+    <string name="owner">Owner</string>
+
 
     <string name="add_transaction_notification_title_template">Add transaction: %1$s</string>
 
