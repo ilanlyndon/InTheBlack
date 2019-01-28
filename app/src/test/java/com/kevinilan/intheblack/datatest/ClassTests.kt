@@ -10,9 +10,9 @@ import org.junit.Assert.*
 
 // Transaction class tests
 class TransactionTest{
-   val trans1 = Transaction("lunch", 30.50, TransactionType.Expense, "USD", "Kevin")
-   val trans2 = Transaction("dinner", 75.00, TransactionType.Expense, "NIS", "Shira")
-   val trans3 = Transaction("PayCheck", 500.00, TransactionType.Revenue, "NIS", "Kevin")
+    val trans1 = Transaction("lunch", 30.50, TransactionType.Expense, "USD", "Kevin", null, null)
+    val trans2 = Transaction("dinner", 75.00, TransactionType.Expense, "NIS", "Shira", null, null)
+    val trans3 = Transaction("PayCheck", 500.00, TransactionType.Revenue, "NIS", "Kevin", null, null)
 
     @Test
     fun transaction_Test1(){
@@ -43,9 +43,9 @@ class TransactionTest{
 class LedgerTest {
 
 
-    val trans1 = Transaction("lunch", 30.50, TransactionType.Expense, "USD", "Kevin")
-    val trans2 = Transaction("dinner", 75.00, TransactionType.Expense, "NIS", "Shira")
-    val trans3 = Transaction("PayCheck", 500.00, TransactionType.Revenue, "NIS", "Kevin")
+    val trans1 = Transaction("lunch", 30.50, TransactionType.Expense, "USD", "Kevin", null, null)
+    val trans2 = Transaction("dinner", 75.00, TransactionType.Expense, "NIS", "Shira", null, null)
+    val trans3 = Transaction("PayCheck", 500.00, TransactionType.Revenue, "NIS", "Kevin", null, null)
     val ledger1 = Ledger(50.00)
     @Test
     fun ledgerInstantiatesTest(){
