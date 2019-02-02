@@ -9,6 +9,8 @@ import com.kevinilan.intheblack.EXPENSE
 import com.kevinilan.intheblack.R
 import com.kevinilan.intheblack.REVENUE
 
+
+//TODO make the default choice Expense
 class TransactionSpinner(context: Context) {
     val spinnerOptions = arrayOf(context.getString(R.string.expense), context.getString(R.string.revenue))
     val transactionSpinnerAdapter = ArrayAdapter(context, android.R.layout.simple_spinner_dropdown_item, spinnerOptions)

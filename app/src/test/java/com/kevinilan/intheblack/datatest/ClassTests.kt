@@ -1,8 +1,6 @@
 package com.kevinilan.intheblack.datatest
 
-import com.kevinilan.intheblack.data.Ledger
-import com.kevinilan.intheblack.data.Transaction
-import com.kevinilan.intheblack.data.TransactionType
+import com.kevinilan.intheblack.data.*
 import org.junit.Test
 
 import org.junit.Assert.*
@@ -68,4 +66,58 @@ class LedgerTest {
     }
 }
 
+class BudgetTest {
 
+    val budgetItem1 = BudgetItem("Transportation", 0.00)
+    val budgetItem2 = BudgetItem("Gas", 50.00)
+    val budgetItem3 = BudgetItem("Rav Kav", 100.00)
+    val budgetItem4 = BudgetItem("Explosives", 1200.00)
+    val budgetItem5 = BudgetItem("Rent", 5000.00)
+    val budgetItem6 = BudgetItem("Cows", 500.00)
+    val budgetItem7 = BudgetItem("Cowfood", 100.00)
+
+    @Test
+    fun addSubItems() {
+        budgetItem1.addBudgetSubItem(budgetItem2)
+        budgetItem1.addBudgetSubItem(budgetItem3)
+
+        assertEquals(2, budgetItem1.budgetItemSubItems.size)
+        assertEquals(150.00, budgetItem1.budgetItemAllocationWithSubItems(), 0.00)
+    }
+
+    @Test
+    fun buildBudget() {
+        val budget = Budget("MyBudget")
+        budget.addBudgetItem(budgetItem1)
+        budget.addBudgetItem(budgetItem2)
+        budget.addBudgetItem(budgetItem3)
+        budget.addBudgetItem(budgetItem4)
+        budget.addBudgetItem(budgetItem5)
+        budget.addBudgetItem(budgetItem6)
+        budget.addBudgetItem(budgetItem7)
+
+        assertEquals(6950.00, budget.totalBudget(), 0.00)
+
+
+    }
+
+    @Test
+    fun buildBudgetWithSubCategories() {
+        val budget = Budget("MyBudget")
+
+        budgetItem1.addBudgetSubItem(budgetItem2)
+        budgetItem1.addBudgetSubItem(budgetItem3)
+
+        budget.addBudgetItem(budgetItem1)
+        budget.addBudgetItem(budgetItem4)
+        budget.addBudgetItem(budgetItem5)
+        budget.addBudgetItem(budgetItem6)
+        budget.addBudgetItem(budgetItem7)
+
+        assertEquals(6950.00, budget.totalBudget(), 0.00)
+
+
+    }
+
+
+}
