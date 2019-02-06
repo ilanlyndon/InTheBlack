@@ -47,7 +47,7 @@ class LedgerDisplayFragment : Fragment() {
                     columnCount <= 1 -> LinearLayoutManager(context)
                     else -> GridLayoutManager(context, columnCount)
                 }
-                adapter = MyLedgerRecyclerViewAdapter(DummyContent.ITEMS, listener)
+                adapter = LedgerRecyclerViewAdapter(DummyContent.ITEMS, listener)
             }
         }
         return view

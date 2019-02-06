@@ -18,10 +18,10 @@ import kotlinx.android.synthetic.main.fragment_ledger.view.*
  * specified [OnListFragmentInteractionListener].
  * TODO: Replace the implementation with code for your data type.
  */
-class MyLedgerRecyclerViewAdapter(
+class LedgerRecyclerViewAdapter(
     private val mValues: List<DummyItem>,
     private val mListener: OnListFragmentInteractionListener?
-) : RecyclerView.Adapter<MyLedgerRecyclerViewAdapter.ViewHolder>() {
+) : RecyclerView.Adapter<LedgerRecyclerViewAdapter.ViewHolder>() {
 
     private val mOnClickListener: View.OnClickListener
 

@@ -44,23 +44,20 @@ class LedgerTest {
     val trans1 = Transaction("lunch", 30.50, TransactionType.Expense, "USD", "Kevin", null, null)
     val trans2 = Transaction("dinner", 75.00, TransactionType.Expense, "NIS", "Shira", null, null)
     val trans3 = Transaction("PayCheck", 500.00, TransactionType.Revenue, "NIS", "Kevin", null, null)
-    val ledger1 = Ledger(50.00)
+    val ledger1 = Ledger(50.00, listOf(trans1, trans2, trans3))
     @Test
     fun ledgerInstantiatesTest(){
         assertEquals(50.00, ledger1.startingBalance, 0.00)
     }
     @Test
     fun ledgerAddsTransactionsTest(){
-        ledger1.addTransaction(trans1)
-        assertEquals(1, ledger1.transactions.size)
-        assertEquals(30.50, ledger1.transactions[0].transactionValue, 0.00)
+        val ledger2 = Ledger(50.00, listOf(trans1))
+        assertEquals(1, ledger2.transactions.size)
+        assertEquals(30.50, ledger2.transactions[0].transactionValue, 0.00)
     }
 
     @Test
     fun ledgerDeterminesBalance(){
-        ledger1.addTransaction(trans1)
-        ledger1.addTransaction(trans2)
-        ledger1.addTransaction(trans3)
         assertEquals(3, ledger1.transactions.size)
         assertEquals(444.50, ledger1.getBalance(), 0.00)
     }
@@ -68,51 +65,28 @@ class LedgerTest {
 
 class BudgetTest {
 
-    val budgetItem1 = BudgetItem("Transportation", 0.00)
-    val budgetItem2 = BudgetItem("Gas", 50.00)
-    val budgetItem3 = BudgetItem("Rav Kav", 100.00)
-    val budgetItem4 = BudgetItem("Explosives", 1200.00)
-    val budgetItem5 = BudgetItem("Rent", 5000.00)
-    val budgetItem6 = BudgetItem("Cows", 500.00)
-    val budgetItem7 = BudgetItem("Cowfood", 100.00)
+    val budgetItem2 = BudgetItem("Gas", 50.00, null)
+    val budgetItem3 = BudgetItem("Rav Kav", 100.00, null)
+    val budgetItem1 = BudgetItem("Transportation", 0.00, listOf(budgetItem2, budgetItem3))
+
+    val budgetItem4 = BudgetItem("Explosives", 1200.00, null)
+    val budgetItem5 = BudgetItem("Rent", 5000.00, null)
+
+    val budgetItem7 = BudgetItem("Cowfood", 100.00, null)
+    val budgetItem6 = BudgetItem("Cows", 500.00, listOf(budgetItem7))
+
 
     @Test
-    fun addSubItems() {
-        budgetItem1.addBudgetSubItem(budgetItem2)
-        budgetItem1.addBudgetSubItem(budgetItem3)
+    fun budgetItemSubItems() {
 
-        assertEquals(2, budgetItem1.budgetItemSubItems.size)
+        assertEquals(2, budgetItem1.budgetItemSubItems?.size)
         assertEquals(150.00, budgetItem1.budgetItemAllocationWithSubItems(), 0.00)
     }
 
     @Test
     fun buildBudget() {
-        val budget = Budget("MyBudget")
-        budget.addBudgetItem(budgetItem1)
-        budget.addBudgetItem(budgetItem2)
-        budget.addBudgetItem(budgetItem3)
-        budget.addBudgetItem(budgetItem4)
-        budget.addBudgetItem(budgetItem5)
-        budget.addBudgetItem(budgetItem6)
-        budget.addBudgetItem(budgetItem7)
+        val budget = Budget("MyBudget", listOf(budgetItem1, budgetItem4, budgetItem5, budgetItem6))
 
-        assertEquals(6950.00, budget.totalBudget(), 0.00)
-
-
-    }
-
-    @Test
-    fun buildBudgetWithSubCategories() {
-        val budget = Budget("MyBudget")
-
-        budgetItem1.addBudgetSubItem(budgetItem2)
-        budgetItem1.addBudgetSubItem(budgetItem3)
-
-        budget.addBudgetItem(budgetItem1)
-        budget.addBudgetItem(budgetItem4)
-        budget.addBudgetItem(budgetItem5)
-        budget.addBudgetItem(budgetItem6)
-        budget.addBudgetItem(budgetItem7)
 
         assertEquals(6950.00, budget.totalBudget(), 0.00)
 
