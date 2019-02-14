@@ -15,6 +15,12 @@
     <string name="amount">Amount</string>
     <string name="item">Item</string>
     <string name="owner">Owner</string>
+    <string name="connect">Link</string>
+    <string name="budget">Budget</string>
+    <string name="budget_remaining">Budget Remaining:</string>
+    <string name="to">to</string>
+    <string name="spent">Spent</string>
+    <string name="plus">+</string>
 
 
     <string name="add_transaction_notification_title_template">Add transaction: %1$s</string>

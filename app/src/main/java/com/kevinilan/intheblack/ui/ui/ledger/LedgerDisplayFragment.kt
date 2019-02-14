@@ -1,5 +1,6 @@
 package com.kevinilan.intheblack.ui.ui.ledger
 
+import android.arch.lifecycle.ViewModelProviders
 import android.content.Context
 import android.os.Bundle
 import android.support.v4.app.Fragment
@@ -10,6 +11,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.kevinilan.intheblack.R
+import com.kevinilan.intheblack.data.Transaction
 
 import com.kevinilan.intheblack.ui.ui.ledger.dummy.DummyContent
 import com.kevinilan.intheblack.ui.ui.ledger.dummy.DummyContent.DummyItem
@@ -26,13 +28,27 @@ class LedgerDisplayFragment : Fragment() {
 
     private var listener: OnListFragmentInteractionListener? = null
 
+    private lateinit var ledgerViewModel: LedgerViewModel
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
 
         arguments?.let {
             columnCount = it.getInt(ARG_COLUMN_COUNT)
         }
     }
+
+    private fun initViewModel() {
+        ledgerViewModel = ViewModelProviders.of(this).get(LedgerViewModel::class.java)
+        ledgerViewModel.let { lifecycle.addObserver(it) }
+        // start repository here I think
+        // ledgerViewModel.
+
+
+    }
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -47,7 +63,8 @@ class LedgerDisplayFragment : Fragment() {
                     columnCount <= 1 -> LinearLayoutManager(context)
                     else -> GridLayoutManager(context, columnCount)
                 }
-                adapter = LedgerRecyclerViewAdapter(DummyContent.ITEMS, listener)
+
+                adapter = LedgerRecyclerViewAdapter(listener)
             }
         }
         return view
@@ -80,7 +97,7 @@ class LedgerDisplayFragment : Fragment() {
      */
     interface OnListFragmentInteractionListener {
         // TODO: Update argument type and name
-        fun onListFragmentInteraction(item: DummyItem?)
+        fun onListFragmentInteraction(item: Transaction?)
     }
 
     companion object {

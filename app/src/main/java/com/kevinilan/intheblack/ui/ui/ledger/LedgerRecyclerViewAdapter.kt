@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import com.kevinilan.intheblack.R
+import com.kevinilan.intheblack.data.Transaction
 
 
 import com.kevinilan.intheblack.ui.ui.ledger.LedgerDisplayFragment.OnListFragmentInteractionListener
@@ -19,15 +20,15 @@ import kotlinx.android.synthetic.main.fragment_ledger.view.*
  * TODO: Replace the implementation with code for your data type.
  */
 class LedgerRecyclerViewAdapter(
-    private val mValues: List<DummyItem>,
     private val mListener: OnListFragmentInteractionListener?
 ) : RecyclerView.Adapter<LedgerRecyclerViewAdapter.ViewHolder>() {
 
     private val mOnClickListener: View.OnClickListener
-
+    //todo need a method to get this value from viewmodel
+    private lateinit var mValues: List<Transaction>
     init {
         mOnClickListener = View.OnClickListener { v ->
-            val item = v.tag as DummyItem
+            val item = v.tag as Transaction
             // Notify the active callbacks interface (the activity, if the fragment is attached to
             // one) that an item has been selected.
             mListener?.onListFragmentInteraction(item)
@@ -42,8 +43,8 @@ class LedgerRecyclerViewAdapter(
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = mValues[position]
-        holder.mIdView.text = item.id
-        holder.mContentView.text = item.content
+        holder.mIdView.text = item.transactionName
+        holder.mContentView.text = item.transactionValue.toString()
 
         with(holder.mView) {
             tag = item
