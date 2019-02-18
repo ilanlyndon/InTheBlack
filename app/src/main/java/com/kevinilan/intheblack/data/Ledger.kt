@@ -1,7 +1,7 @@
 package com.kevinilan.intheblack.data
 
 
-data class Ledger(val startingBalance: Double, val transactions: List<Transaction>) {
+data class Ledger(val startingBalance: Double, val transactions: List<Transaction>, val dateRange: Any?) {
 
     // function that adds up transaction values in our ledger, expenses will be subtracted, revenue added
     fun getBalance(): Double {

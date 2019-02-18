@@ -3,9 +3,20 @@
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/colorSecondary</item>
-        <item name="colorPrimaryDark">@color/colorSecondaryDark</item>
-        <item name="colorAccent">@color/colorSecondaryLight</item>
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorPrimaryLight</item>
+        <item name="actionBarStyle">@style/MyActionBar</item>
+    </style>
+
+    <style name="MyActionBar" parent="@style/Widget.AppCompat.ActionBar">
+        <item name="android:background">@color/colorPrimaryDark</item>
+        <item name="android:titleTextStyle">@style/MyActionBarText</item>
+        <item name="titleTextStyle">@style/MyActionBarText</item>
+    </style>
+
+    <style name="MyActionBarText" parent="@style/TextAppearance.AppCompat.Widget.ActionBar.Title">
+        <item name="android:textColor">@color/black</item>
     </style>
 
     <style name="TextStyle">
@@ -57,8 +68,8 @@
         <item name="android:textColor">@color/black</item>
         <item name="android:textSize">12sp</item>
         <item name="android:gravity">center_vertical|center_horizontal</item>
-        <item name="android:backgroundTint">@color/colorSecondary</item>
-        <item name="android:background">@color/colorSecondary</item>
+        <item name="android:backgroundTint">@color/colorPrimary</item>
+        <item name="android:background">@color/colorPrimary</item>
     </style>
 
 </resources>

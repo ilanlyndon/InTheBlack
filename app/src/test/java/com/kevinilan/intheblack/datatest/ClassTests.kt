@@ -47,7 +47,7 @@ class LedgerTest {
     val trans1 = Transaction("lunch", 30.50, TransactionType.Expense, "USD", "Kevin", null, null)
     val trans2 = Transaction("dinner", 75.00, TransactionType.Expense, "NIS", "Shira", null, null)
     val trans3 = Transaction("PayCheck", 500.00, TransactionType.Revenue, "NIS", "Kevin", null, null)
-    val ledger1 = Ledger(50.00, listOf(trans1, trans2, trans3))
+    val ledger1 = Ledger(50.00, listOf(trans1, trans2, trans3), null)
     @Test
     fun ledgerInstantiatesTest() {
         assertEquals(50.00, ledger1.startingBalance, 0.00)
@@ -55,7 +55,7 @@ class LedgerTest {
 
     @Test
     fun ledgerAddsTransactionsTest() {
-        val ledger2 = Ledger(50.00, listOf(trans1))
+        val ledger2 = Ledger(50.00, listOf(trans1), null)
         assertEquals(1, ledger2.transactions.size)
         assertEquals(30.50, ledger2.transactions[0].transactionValue, 0.00)
     }
@@ -91,7 +91,6 @@ class BudgetTest {
     fun buildBudget() {
         val budget = Budget("MyBudget", listOf(budgetItem1, budgetItem4, budgetItem5, budgetItem6))
 
-
         assertEquals(6950.00, budget.totalBudget(), 0.00)
 
 
@@ -100,13 +99,64 @@ class BudgetTest {
 
 }
 
+class UserClassTest() {
+    val userName = "BobDaBuilda"
+    val trans1 = Transaction("lunch", 30.50, TransactionType.Expense, "USD", "Kevin", null, null)
+    val trans2 = Transaction("dinner", 75.00, TransactionType.Expense, "NIS", "Shira", null, null)
+    val trans3 = Transaction("PayCheck", 500.00, TransactionType.Revenue, "NIS", "Kevin", null, null)
+    val ledger1 = Ledger(50.00, listOf(trans1, trans2, trans3), null)
 
-class jsonConversionTests() {
+    val budgetItem2 = BudgetItem("Gas", 50.00, null)
+    val budgetItem3 = BudgetItem("Rav Kav", 100.00, null)
+    val budgetItem1 = BudgetItem("Transportation", 0.00, listOf(budgetItem2, budgetItem3))
+
+    val budgetItem4 = BudgetItem("Explosives", 1200.00, null)
+    val budgetItem5 = BudgetItem("Rent", 5000.00, null)
+
+    val budgetItem7 = BudgetItem("Cowfood", 100.00, null)
+    val budgetItem6 = BudgetItem("Cows", 500.00, listOf(budgetItem7))
+
+    val budget1 = Budget("MyBudget", listOf(budgetItem1, budgetItem4, budgetItem5, budgetItem6))
+
+    val userBob = IntheBlackUser(userName, null, listOf(budget1), listOf(ledger1))
+
+
+    @Test
+    fun nameTest() {
+        assertEquals("BobDaBuilda", userBob.userName)
+    }
+
+    @Test
+    fun linkedAccountsTest() {
+        assertEquals(null, userBob.linkedAccounts)
+    }
+
+    @Test
+    fun budgetTest() {
+        assertEquals(
+            Budget("MyBudget", listOf(budgetItem1, budgetItem4, budgetItem5, budgetItem6)),
+            userBob.budgets!![0]
+        )
+    }
+
+    @Test
+    fun ledgerTest() {
+        assertEquals(Ledger(50.00, listOf(trans1, trans2, trans3), null), userBob.ledgers!![0])
+    }
+
+    @Test
+    fun fullUserTest() {
+        assertEquals(IntheBlackUser("BobDaBuilda", null, listOf(budget1), listOf(ledger1)), userBob)
+    }
+}
+
+
+class JsonConversionTests() {
 
     val trans1 = Transaction("lunch", 30.50, TransactionType.Expense, "USD", "Kevin", null, null)
     val trans2 = Transaction("dinner", 75.00, TransactionType.Expense, "NIS", "Shira", null, null)
     val trans3 = Transaction("PayCheck", 500.00, TransactionType.Revenue, "NIS", "Kevin", null, null)
-    val ledger1 = Ledger(50.00, listOf(trans1, trans2, trans3))
+    val ledger1 = Ledger(50.00, listOf(trans1, trans2, trans3), null)
 
     val budgetItem2 = BudgetItem("Gas", 50.00, null)
     val budgetItem3 = BudgetItem("Rav Kav", 100.00, null)
