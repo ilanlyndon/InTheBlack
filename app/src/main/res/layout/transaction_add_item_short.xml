@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="horizontal"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+        >
+
+    <Spinner
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:id="@+id/transaction_add_item_spinner"
+            />
+
+    <EditText
+            android:id="@+id/transaction_add_item_name"
+            style="@style/Transaction_Item"
+            android:hint="@string/what_kind"
+            android:autofillHints="@string/what_kind"
+            android:importantForAutofill="auto"
+            android:maxLines="1"
+            android:lines="1"
+            android:inputType="textAutoComplete"
+            />
+
+    <EditText
+            style="@style/Transaction_Item"
+            android:id="@+id/transaction_add_item_value"
+            android:inputType="numberDecimal"
+            android:importantForAutofill="no"
+            android:hint="@string/zero"
+            android:maxLines="1"
+            android:lines="1"
+            />
+
+    <EditText
+            style="@style/Transaction_Item"
+            android:id="@+id/transaction_add_item_maker"
+            android:hint="@string/who"
+            android:importantForAutofill="yes"
+            android:maxLines="1"
+            android:lines="1"
+            android:inputType="textPersonName"
+            />
+
+    <EditText
+            style="@style/Transaction_Item"
+            android:id="@+id/transaction_add_item_date"
+            android:hint="@string/date"
+            android:maxLines="1"
+            android:lines="1"
+            android:inputType="date"
+            />
+
+
+</LinearLayout>

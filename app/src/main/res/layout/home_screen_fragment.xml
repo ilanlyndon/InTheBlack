@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:backgroundTint="@color/colorPrimaryLight"
+        android:background="@color/colorPrimaryLight"
+        tools:context=".ui.HomeScreen">
+
+    <TextView
+            android:text="Money money money"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView3"
+            android:layout_marginTop="8dp"
+            android:textColor="@color/black"
+            android:background="@color/colorPrimary"
+            android:textSize="14sp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintVertical_bias="0.0"/>
+
+    <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/dividerTop"
+            app:layout_constraintHorizontal_bias="0.027"
+            app:layout_constraintVertical_bias="0.308"
+            android:backgroundTint="@color/colorPrimary"
+            android:background="@color/colorPrimary"
+            >
+
+        <Button
+                android:text="@string/budget"
+                style="@style/HomeTextStyle"
+                android:id="@+id/home_screen_budget_button"
+                android:background="@color/colorPrimaryDark"
+
+                />
+
+        <TextView
+                android:text="@string/budget_remaining"
+                style="@style/HomeTextStyle"
+                android:id="@+id/home_screen_budget_remaining_text"/>
+
+        <TextView
+                android:text="3000"
+                style="@style/HomeTextStyle"
+                android:id="@+id/home_screen_budget_remaining_number"
+
+                />
+
+    </LinearLayout>
+
+
+    <Button
+            android:text="@string/account"
+            android:id="@+id/home_screen_connect_button"
+            style="@style/HomeTextStyle"
+            android:background="@color/colorPrimaryDark"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintVertical_bias="0.0"/>
+
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/home_screen_linear_layout_transaction_container"
+            app:layout_constraintBottom_toTopOf="@+id/dividerTop"
+            app:layout_constraintTop_toBottomOf="@id/dividerBottom"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:orientation="horizontal"
+            android:backgroundTint="@color/colorPrimaryDark"
+            >
+
+
+        <TextView
+                android:text="@string/spent"
+                style="@style/HomeLinearLayoutItems"
+                android:id="@+id/home_screen_budget_left_text"
+                />
+
+        <TextView
+                android:text="5000"
+                style="@style/HomeLinearLayoutItems"
+                android:id="@+id/home_screen_budget_left_number"
+                />
+
+        <TextView
+                android:text="1/1/2020"
+                style="@style/HomeLinearLayoutItems"
+                android:id="@+id/home_screen_transactions_date_start"
+                />
+
+        <TextView
+                android:text="@string/to"
+                style="@style/HomeLinearLayoutItems"
+                android:layout_weight=".5"
+                android:id="@+id/home_screen_to_text"
+                />
+
+        <TextView
+                android:text="12/31/2020"
+                style="@style/HomeLinearLayoutItems"
+                android:id="@+id/home_screen_transactions_date_end"
+                />
+
+        <Button
+                android:text="@string/plus"
+                android:layout_weight="1"
+                android:layout_height="match_parent"
+                android:layout_width="0dp"
+                android:id="@+id/home_screen_add_transaction_button"
+                android:background="@color/colorPrimaryDark"
+                />
+
+
+    </LinearLayout>
+
+
+    <android.support.v7.widget.RecyclerView
+            android:layout_width="395dp"
+            android:layout_height="210dp"
+            app:layout_constraintTop_toBottomOf="@+id/dividerBottom"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:id="@+id/home_screen_transaction_recycler"/>
+
+    <View
+            android:id="@+id/dividerBottom"
+            android:layout_width="395dp"
+            android:layout_height="1dp"
+            android:background="?android:attr/listDivider"
+            android:outlineAmbientShadowColor="@color/colorPrimaryDark"
+            android:outlineSpotShadowColor="@color/colorPrimaryDark"
+            android:backgroundTint="@color/colorPrimaryDark"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="8dp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginBottom="8dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintVertical_bias="0.682"/>
+
+    <View
+            android:id="@+id/dividerTop"
+            android:layout_width="395dp"
+            android:layout_height="1dp"
+            android:background="?android:attr/listDivider"
+            android:outlineAmbientShadowColor="@color/colorPrimaryDark"
+            android:outlineSpotShadowColor="@color/colorPrimaryDark"
+            android:backgroundTint="@color/colorPrimaryDark"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="8dp"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            android:layout_marginBottom="8dp"
+            app:layout_constraintBottom_toTopOf="@+id/home_screen_transaction_recycler"
+            app:layout_constraintVertical_bias="0.858"/>
+
+</android.support.constraint.ConstraintLayout>

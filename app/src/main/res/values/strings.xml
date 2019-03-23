@@ -1,3 +1,38 @@
 <resources>
     <string name="app_name">In The Black</string>
+    <string name="balance">Balance</string>
+    <string name="current_balance">Current Balance</string>
+    <string name="add_transaction">Add Transaction</string>
+    <string name="time_period">Time Period</string>
+    <string name="add">Add</string>
+    <string name="expense">Expense</string>
+    <string name="revenue">Revenue</string>
+    <string name="what_kind">What?</string>
+    <string name="zero">0.00</string>
+    <string name="who">Who?</string>
+    <string name="date">Date</string>
+    <string name="type">Type</string>
+    <string name="amount">Amount</string>
+    <string name="item">Item</string>
+    <string name="owner">Owner</string>
+    <string name="account">Account</string>
+    <string name="budget">Budget</string>
+    <string name="budget_remaining">Budget Remaining:</string>
+    <string name="to">to</string>
+    <string name="spent">Spent</string>
+    <string name="plus">+</string>
+
+
+    <string name="add_transaction_notification_title_template">Add transaction: %1$s</string>
+
+    <!-- TODO: remove this placeholder text -->
+    <string name="add_transaction_notification_placeholder_text_template">You said %1$s and lorem ipsum dolor sit amet,
+        consectetur adipiscing elit. Etiam non enim magna. Morbi dictum, velit vel semper venenatis, magna odio volutpat
+        velit, at ullamcorper nulla lacus sed turpis. Pellentesque vitae metus elit, nec tincidunt tellus. Integer sed
+        nisl sem, ullamcorper ornare lacus. Duis ac mauris sed massa congue volutpat. Donec sed erat sit amet turpis
+        viverra rhoncus sit amet nec magna. Donec lacinia ligula at libero volutpat volutpat nec nec tortor.
+    </string>
+
+    <string name="action_share">Share</string>
+    <string name="action_reply">Reply</string>
 </resources>
